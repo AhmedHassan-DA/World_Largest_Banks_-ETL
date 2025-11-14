@@ -1,7 +1,3 @@
-#banks_project.py
-# Code for ETL operations on Country-GDP data
-
-# Importing the required libraries
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -10,7 +6,7 @@ import sqlite3
 from datetime import datetime
 from io import StringIO
 
-# Initialize known variables
+
 url = 'https://web.archive.org/web/20230908091635/https://en.wikipedia.org/wiki/List_of_largest_banks'
 table_attribs = ['Name', 'MC_USD_Billion']
 csv_path = 'exchange_rate.csv'
@@ -102,27 +98,27 @@ def run_queries(query_statement, sql_connection):
 
 
 
-# Main execution (not inside any function)
+
 if __name__ == '__main__':
     log_progress('Preliminaries complete. Initiating ETL process')
 
-    # Extract
+    
     df_extracted = extract(url, table_attribs)
 
-    # Transform
+    
     df_transformed = transform(df_extracted, csv_path)
 
-    # Load to CSV
+    
     load_to_csv(df_transformed, output_path)
 
-    # Initiate DB connection
+    
     conn = sqlite3.connect(database_name)
     log_progress('SQL Connection initiated')
 
-    # Load to DB
+    
     load_to_db(df_transformed, conn, table_name)
 
-    # Run queries
+    
     queries = [
         "SELECT * FROM Largest_banks;",
         "SELECT AVG(MC_GBP_Billion) FROM Largest_banks;",
@@ -132,9 +128,9 @@ if __name__ == '__main__':
     for q in queries:
         run_queries(q, conn)
 
-    # Single process-complete log after all queries
+    
     log_progress('Process Complete')
 
-    # Close DB connection
+    
     conn.close()
     log_progress('Server Connection closed')
