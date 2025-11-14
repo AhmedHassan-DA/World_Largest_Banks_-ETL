@@ -4,11 +4,6 @@
 
 ---
 
-## Fictional use case
-Built for the *Global Financial Research Institute (GFRI)* to produce quarterly investor briefing packs. The pipeline scrapes a historical snapshot of a public source, normalizes market-cap values, converts currencies using a provided exchange-rate CSV, stores results for analysis, and logs progress for auditability.
-
----
-
 ## Features
 - Web scraping (Wayback Machine snapshot of Wikipedia) to extract the "By market capitalization" table
 - Data cleaning and normalization (top 10 banks)
@@ -18,5 +13,3 @@ Built for the *Global Financial Research Institute (GFRI)* to produce quarterly 
 - Simple SQL query examples for analysis
 
 ---
-
-## File structure (recommended)
